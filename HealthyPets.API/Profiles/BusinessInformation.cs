@@ -1,4 +1,4 @@
-﻿namespace HealthyPets.API.HealthyPets.Profiles;
+﻿namespace HealthyPets.API.Profiles;
 
 public class BusinessInformation
 {

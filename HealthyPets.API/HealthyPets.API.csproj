@@ -17,8 +17,17 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
-      <Folder Include="HealthyPets\HealthProviders" />
+      <Folder Include="Appointments\Interfaces" />
+      <Folder Include="Appointments\Service" />
+      <Folder Include="MedicalRecords\Interfaces" />
+      <Folder Include="MedicalRecords\Services" />
+      <Folder Include="Pacients\Interfaces" />
+      <Folder Include="Pacients\Services" />
+      <Folder Include="Profiles\Interfaces" />
+      <Folder Include="Profiles\Services" />
+      <Folder Include="Social\Domain" />
+      <Folder Include="Social\Interfaces" />
+      <Folder Include="Social\Services" />
     </ItemGroup>
 
 </Project>
