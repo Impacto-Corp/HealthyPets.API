@@ -11,4 +11,14 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Controllers" />
+      <Folder Include="HealthyPets\Appointments" />
+      <Folder Include="HealthyPets\HealthProviders" />
+      <Folder Include="HealthyPets\MedicalRecords" />
+      <Folder Include="HealthyPets\Pacients" />
+      <Folder Include="HealthyPets\Profiles" />
+      <Folder Include="HealthyPets\Social" />
+    </ItemGroup>
+
 </Project>
