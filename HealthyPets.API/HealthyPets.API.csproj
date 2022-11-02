@@ -17,8 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Appointments\Interfaces" />
-      <Folder Include="Appointments\Service" />
       <Folder Include="MedicalRecords\Interfaces" />
       <Folder Include="MedicalRecords\Services" />
       <Folder Include="Pacients\Interfaces" />
