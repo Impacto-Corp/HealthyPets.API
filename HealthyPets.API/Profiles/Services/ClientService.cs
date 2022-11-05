@@ -8,7 +8,7 @@ public class PersonsService : IPersonsService
 {
     private readonly IPersonsRepository _personsRepository;
     
-    public async Task<IEnumerable<Person>> ListAsync()
+    public async Task<IEnumerable<Client>> ListAsync()
     {
         return await _personsRepository.ListAsync();
     }
