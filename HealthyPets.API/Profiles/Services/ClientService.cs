@@ -1,14 +1,15 @@
-﻿using HealthyPets.API.Profiles.Domain.Repositories;
+using HealthyPets.API.Profiles.Domain.Model;
+using HealthyPets.API.Profiles.Domain.Repositories;
 using HealthyPets.API.Profiles.Domain.Services;
 
 namespace HealthyPets.API.Profiles.Services;
 
-public class ClientService : IClientService
+public class PersonsService : IPersonsService
 {
-    private readonly IClientService _clientService;
-
-    public ClientService(IClientRepository clientRepository)
+    private readonly IPersonsRepository _personsRepository;
+    
+    public async Task<IEnumerable<Client>> ListAsync()
     {
-        _
+        return await _personsRepository.ListAsync();
     }
 }
