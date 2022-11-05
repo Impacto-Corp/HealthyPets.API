@@ -1,5 +1,6 @@
 using HealthyPets.API.Appointments.Domain.Model;
 using HealthyPets.API.MedicalRecords.Domain;
+using HealthyPets.API.MedicalRecords.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HealthyPets.API.Shared.Persistence.Contexts;
