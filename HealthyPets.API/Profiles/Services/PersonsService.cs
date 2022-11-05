@@ -1,9 +1,8 @@
-﻿using HealthyPets.API.Patients.Domain;
-using HealthyPets.API.Patients.Domain.Model;
-using HealthyPets.API.Patients.Domain.Repositories;
-using HealthyPets.API.Patients.Domain.Services;
+﻿using HealthyPets.API.Profiles.Domain.Model;
+using HealthyPets.API.Profiles.Domain.Repositories;
+using HealthyPets.API.Profiles.Domain.Services;
 
-namespace HealthyPets.API.Patients.Services;
+namespace HealthyPets.API.Profiles.Services;
 
 public class PersonsService : IPersonsService
 {

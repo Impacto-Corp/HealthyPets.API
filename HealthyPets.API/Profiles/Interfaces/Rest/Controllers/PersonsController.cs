@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using HealthyPets.API.Patients.Domain.Services;
+using HealthyPets.API.Profiles.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HealthyPets.API.Patients.Interfaces.Rest.Controllers;
+namespace HealthyPets.API.Profiles.Interfaces.Rest.Controllers;
 
 [ApiController]
 [Route("/api/v1/[controller]")]

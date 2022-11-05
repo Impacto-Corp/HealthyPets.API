@@ -1,6 +1,6 @@
-﻿using HealthyPets.API.Patients.Domain.Model;
+﻿using HealthyPets.API.Profiles.Domain.Model;
 
-namespace HealthyPets.API.Patients.Domain.Repositories;
+namespace HealthyPets.API.Profiles.Domain.Repositories;
 
 public interface IPersonsRepository
 {
