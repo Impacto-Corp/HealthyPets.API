@@ -1,4 +1,5 @@
 using HealthyPets.API.MedicalRecords.Domain;
+using HealthyPets.API.MedicalRecords.Domain.Models;
 using HealthyPets.API.Patients.Domain.Model;
 using HealthyPets.API.Profiles.Domain.Model;
 

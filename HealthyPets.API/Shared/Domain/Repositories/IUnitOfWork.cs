@@ -1,4 +1,4 @@
-namespace HealthyPets.API.Shared.Domein.Repositories;
+namespace HealthyPets.API.Shared.Domain.Repositories;
 
 public interface IUnitOfWork
 {

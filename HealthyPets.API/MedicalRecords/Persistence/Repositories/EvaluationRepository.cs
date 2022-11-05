@@ -14,26 +14,26 @@ public class EvaluationRepository: BaseRepository, IEvaluationRepository
 
     public async Task<IEnumerable<Evaluation>> ListAsync()
     {
-        return await _context.Evaluations.ToListAsync();
+        return await _context.Evaluation.ToListAsync();
     }
 
     public async Task AddAsync(Evaluation evaluation)
     {
-        await _context.Evaluations.AddAsync(evaluation);
+        await _context.Evaluation.AddAsync(evaluation);
     }
 
     public async Task<Evaluation> FindByIdAsync(int id)
     {
-        return await _context.Evaluations.FindAsync(id);
+        return await _context.Evaluation.FindAsync(id);
     }
 
     public void Update(Evaluation evaluation)
     {
-        _context.Evaluations.Update(evaluation);
+        _context.Evaluation.Update(evaluation);
     }
 
     public void Remove(Evaluation evaluation)
     {
-        _context.Evaluations.Remove(evaluation);
+        _context.Evaluation.Remove(evaluation);
     }
 }
