@@ -1,11 +1,11 @@
-using HealthyPets.API.Pacients.Domain;
+using HealthyPets.API.Patients.Domain.Model;
 
 namespace HealthyPets.API.Appointments.Domain.Model;
 
-public class Appoitment
+public class Appointment
 {
     public int Id { get; set; }
     public Person Client { get; set; }
-    public AnimalClass Pet { get; set; }
+    public Pets Pet { get; set; }
     
 }
