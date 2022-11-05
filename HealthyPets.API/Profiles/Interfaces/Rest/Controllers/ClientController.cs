@@ -6,14 +6,14 @@ namespace HealthyPets.API.Profiles.Interfaces.Rest.Controllers;
 
 [ApiController]
 [Route("/api/v1/[controller]")]
-public class PersonsController
+public class ClientController
 {
-    private readonly IPersonsService _personsService;
+    private readonly IClientService _clientService;
     private readonly IMapper _mapper;
 
-    public PersonsController(IPersonsService personsService, IMapper mapper)
+    public ClientController(IClientService clientService, IMapper mapper)
     {
-        _personsService = personsService;
+        _clientService = clientService;
         _mapper=mapper;
     }
 }

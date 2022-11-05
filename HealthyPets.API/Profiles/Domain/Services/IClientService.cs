@@ -2,7 +2,7 @@
 
 namespace HealthyPets.API.Profiles.Domain.Services;
 
-public interface IPersonsService
+public interface IClientService
 {
-    Task<IEnumerable<Person>> ListAsync();
+    Task<IEnumerable<Client>> ListAsync();
 }
