@@ -39,14 +39,43 @@ public class EvaluationService:IEvaluationService
     public async Task<EvaluationResponse> UpdateAsync(int id, Evaluation evaluation)
     {
         var existingEvaluation = await _evaluationRepository.FindByIdAsync(id);
-        if ()
+        if (existingEvaluation==null)
         {
-            
+            return new EvaluationResponse("Evaluation not found.");
+        }
+
+        existingEvaluation.Name = evaluation.Name;
+        try
+        {
+            _evaluationRepository.Update(existingEvaluation);
+            await _unitOfWork.CompleteAsync();
+
+            return new EvaluationResponse(existingEvaluation);
+        }
+        catch (Exception e)
+        {
+            return new EvaluationResponse($"An error occurred while updating the evaluation");
         }
     }
 
-    public Task<EvaluationResponse> DeleteAsync(int id)
+    public async Task<EvaluationResponse> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var existingEvaluation = await _evaluationRepository.FindByIdAsync(id);
+        if (existingEvaluation == null)
+        {
+            return new EvaluationResponse("Evaluation not found.");
+        }
+
+        try
+        {
+            _evaluationRepository.Remove(existingEvaluation);
+            await _unitOfWork.CompleteAsync();
+            return new EvaluationResponse(existingEvaluation);
+
+        }
+        catch (Exception e)
+        {
+            return new EvaluationResponse($"An error occurred while deleting the category:{e.Message}");
+        }
     }
 }
