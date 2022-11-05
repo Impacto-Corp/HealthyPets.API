@@ -7,7 +7,7 @@ namespace HealthyPets.API.Shared.Persistence.Contexts;
 public class AppDbContext:DbContext
 {
     public DbSet<Evaluation> Evaluations { get; set; }
-    public DbSet<Appointment> Appointment { get; set; }
+    public DbSet<Appointment> Appointments { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
         
