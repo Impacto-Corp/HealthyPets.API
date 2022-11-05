@@ -1,4 +1,4 @@
-using HealthyPets.API.Shared.Domein.Repositories;
+using HealthyPets.API.Shared.Domain.Repositories;
 using HealthyPets.API.Shared.Persistence.Contexts;
 
 namespace HealthyPets.API.Shared.Persistence.Repositories;
