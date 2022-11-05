@@ -18,8 +18,6 @@
 
     <ItemGroup>
       <Folder Include="MedicalRecords\Services" />
-      <Folder Include="Profiles\Interfaces" />
-      <Folder Include="Profiles\Services" />
       <Folder Include="Shared\Extensions" />
       <Folder Include="Social\Domain" />
       <Folder Include="Social\Interfaces" />

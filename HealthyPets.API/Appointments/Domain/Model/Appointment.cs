@@ -1,4 +1,5 @@
 using HealthyPets.API.Patients.Domain.Model;
+using HealthyPets.API.Profiles.Domain.Model;
 
 namespace HealthyPets.API.Appointments.Domain.Model;
 

@@ -1,4 +1,6 @@
-﻿namespace HealthyPets.API.Patients.Domain.Model;
+﻿using HealthyPets.API.Patients.Domain.Model;
+
+namespace HealthyPets.API.Profiles.Domain.Model;
 
 public class Person
 {
