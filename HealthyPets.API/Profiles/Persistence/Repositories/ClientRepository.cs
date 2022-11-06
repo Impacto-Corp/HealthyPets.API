@@ -12,28 +12,28 @@ public class ClientRepository:BaseRepository, IClientRepository
     {
     }
 
-    public Task<IEnumerable<Client>> ListAsync()
+    public async Task<IEnumerable<Client>> ListAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Clients.ToListAsync();
     }
 
-    public Task AddAsync(Client client)
+    public async Task AddAsync(Client client)
     {
-        throw new NotImplementedException();
+     await _context.Clients.AddAsync(client);
     }
 
-    public Task<Client> FindByIdAsync(int id)
+    public async Task<Client> FindByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Clients.FindAsync(id);
     }
-
     public void Update(Client client)
     {
-        throw new NotImplementedException();
+        _context.Clients.Update(client);
     }
 
     public void Remove(Client client)
     {
-        throw new NotImplementedException();
+        _context.Clients.Remove(client);
+
     }
 }
