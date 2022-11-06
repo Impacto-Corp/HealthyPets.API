@@ -3,6 +3,7 @@ using AutoMapper;
 using HealthyPets.API.Appointments.Domain.Model;
 using HealthyPets.API.Appointments.Domain.Service;
 using HealthyPets.API.Appointments.Resources;
+using HealthyPets.API.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthyPets.API.Appointments.Interfaces.Rest.Controllers;
@@ -35,19 +36,45 @@ public class AppointmentsController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
 
-        var category = _mapper.Map<SaveCategoryResource, Category>(resource);
-        var result = await _categoryService.SaveAsync(category);
+        var appointment = _mapper.Map<SaveAppointmentResource, Appointment>(resource);
+        var result = await _appointmentService.SaveAsync(appointment);
 
         if (!result.Success)
             return BadRequest(result.Message);
         
-        var categoryResource = _mapper.Map<Category, CategoryResource>(result.Resource); //Convirtiendo de Category a CategoryResource
-        return Created(nameof(PostAsync), categoryResource);
+        var appointmentResource = _mapper.Map<Appointment, AppointmentResource>(result.Resource); 
+        return Created(nameof(PostAsync), appointmentResource);
     }
     
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveAppointmentResource resource)
+    {
+        if(!ModelState.IsValid)
+            return BadRequest(ModelState.GetErrorMessages());
+
+        
+        var appointment = _mapper.Map<SaveAppointmentResource, Appointment>(resource); 
+
+        var result = await _appointmentService.UpdateAsync(id, appointment);
+
+        if (!result.Success)
+            return BadRequest(result.Message);
+        
+        var appointmentResource= _mapper.Map<Appointment, AppointmentResource>(result.Resource);
+        return Ok(appointmentResource); 
+    }
     
-    
-    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync(int id)
+    {
+        var result = await _appointmentService.DeleteAsync(id);
+        
+        if(!result.Success)
+            return BadRequest(result.Message); 
+        
+        var appointmentResource= _mapper.Map<Appointment, AppointmentResource>(result.Resource);
+        return Ok(appointmentResource); 
+    }
     
     
     
