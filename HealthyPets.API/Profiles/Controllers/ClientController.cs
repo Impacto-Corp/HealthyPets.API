@@ -3,6 +3,7 @@ using AutoMapper;
 using HealthyPets.API.Profiles.Domain.Model;
 using HealthyPets.API.Profiles.Domain.Services;
 using HealthyPets.API.Profiles.Resource;
+using HealthyPets.API.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthyPets.API.Profiles.Controllers;
@@ -34,7 +35,7 @@ public class ClientController:ControllerBase
     public async Task<IActionResult> PostAsync([FromBody] SaveClientResource resource)
     {
         if (!ModelState.IsValid)
-            return BadRequest(ModelState.GetErrorMessagges());
+            return BadRequest(ModelState.GetErrorMessages());
 
         var client = _mapper.Map<SaveClientResource, Client  >(resource);
         var result = await _clientService.SaveAsync(client);
@@ -42,22 +43,22 @@ public class ClientController:ControllerBase
         if (!result.Success)
             return BadRequest(result.Message);
 
-        var evaluationResource = _mapper.Map<Evaluation, EvaluationResource>(result.Resource);
+        var evaluationResource = _mapper.Map<Client, ClientResource>(result.Resource);
         return Created(nameof(PostAsync), evaluationResource);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveEvaluationResource resource)
+    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveClientResource resource)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
 
-        var evaluation = _mapper.Map<SaveEvaluationResource, Evaluation>(resource);
-        var result = await _evaluationService.UpdateAsync(id, evaluation);
+        var client = _mapper.Map<SaveClientResource, Client>(resource);
+        var result = await _clientService.UpdateAsync(id, client);
 
         if (!result.Success)
             return BadRequest(result.Message);
-        var evaluationResource = _mapper.Map<Evaluation, EvaluationResource>(result.Resource);
+        var clientResource = _mapper.Map<Client, ClientResource>(result.Resource);
         return Ok(evaluationResource);
     }
 
