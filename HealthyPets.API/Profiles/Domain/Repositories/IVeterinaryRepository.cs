@@ -2,7 +2,7 @@
 
 namespace HealthyPets.API.Profiles.Domain.Repositories;
 
-public class IVeterinaryRepository
+public interface IVeterinaryRepository
 {
     Task<IEnumerable<Veterinary>> ListAsync();
     Task AddAsync(Veterinary veterinary);
