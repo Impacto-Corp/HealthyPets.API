@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Analytics\Interfaces" />
       <Folder Include="MedicalRecords\Domain\Services\Comunication" />
       <Folder Include="MedicalRecords\Services" />
       <Folder Include="Shared\Extensions" />
