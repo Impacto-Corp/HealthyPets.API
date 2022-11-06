@@ -18,7 +18,6 @@
 
     <ItemGroup>
       <Folder Include="MedicalRecords\Domain\Services\Comunication" />
-      <Folder Include="MedicalRecords\Mapping" />
       <Folder Include="MedicalRecords\Services" />
       <Folder Include="Shared\Extensions" />
       <Folder Include="Social\Domain" />
