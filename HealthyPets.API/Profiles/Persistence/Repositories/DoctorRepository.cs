@@ -2,6 +2,7 @@
 using HealthyPets.API.Profiles.Domain.Repositories;
 using HealthyPets.API.Shared.Persistence.Contexts;
 using HealthyPets.API.Shared.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace HealthyPets.API.Profiles.Persistence.Repositories;
 
@@ -11,28 +12,27 @@ public class DoctorRepository : BaseRepository, IDoctorRepository
     {
     }
 
-    public Task<IEnumerable<Doctor>> ListAsync()
+    public async Task<IEnumerable<Doctor>> ListAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Doctors.ToListAsync();
     }
 
-    public Task AddAsync(Doctor doctor)
+    public async Task AddAsync(Doctor doctor)
     {
-        throw new NotImplementedException();
-    }
+        await _context.Doctors.AddAsync(doctor);    }
 
-    public Task<Doctor> FindByIdAsync(int id)
+    public async Task<Doctor> FindByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Doctors.FindAsync(id);
     }
 
     public void Update(Doctor doctor)
     {
-        throw new NotImplementedException();
+        _context.Doctors.Update(doctor);
     }
 
     public void Remove(Doctor doctor)
     {
-        throw new NotImplementedException();
+        _context.Doctors.Remove(doctor);
     }
 }
