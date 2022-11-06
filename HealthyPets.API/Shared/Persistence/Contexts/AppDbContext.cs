@@ -1,6 +1,7 @@
 using HealthyPets.API.Appointments.Domain.Model;
 using HealthyPets.API.MedicalRecords.Domain;
 using HealthyPets.API.MedicalRecords.Domain.Models;
+using HealthyPets.API.Patients.Domain.Model;
 using HealthyPets.API.Profiles.Domain.Model;
 using HealthyPets.API.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ public class AppDbContext:DbContext
 {
     public DbSet<Evaluation> Evaluations { get; set; }
     public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Pet> Pets { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
         
@@ -41,7 +43,12 @@ public class AppDbContext:DbContext
         builder.Entity<Appointment>().HasKey(p => p.Id);
         builder.Entity<Appointment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Appointment>().Property(p => p.Date).IsRequired();
-        
+
+        builder.Entity<Pet>().ToTable("Pets");
+        builder.Entity<Pet>().HasKey(p => p.Id);
+        builder.Entity<Pet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Pet>().Property(p => p.Name).IsRequired().HasMaxLength(20);
+        builder.Entity<Pet>().Property(p => p.Species).IsRequired().HasMaxLength(30);
             //Relationships
         //builder.Entity<Appointment>().HasMany(p=>p.Evaluation).WithOne(p=>p.Appo)
         //builder.Entity<Appointment>().HasMany(p=>p.Pet).WithOne(p=>p.Appo)

@@ -7,5 +7,5 @@ public class Client
     //Properties
     public int Id { get; set; }
     public string Name{ get; set; }
-    public Pets Pet{ get; set; }
+    public Pet Pet{ get; set; }
 }
