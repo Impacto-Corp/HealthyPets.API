@@ -21,6 +21,7 @@
       <Folder Include="Analytics\Interfaces" />
       <Folder Include="MedicalRecords\Domain\Services\Comunication" />
       <Folder Include="MedicalRecords\Services" />
+      <Folder Include="Patients\Domain\Services\Communications" />
       <Folder Include="Shared\Extensions" />
       <Folder Include="Social\Domain" />
       <Folder Include="Social\Interfaces" />
