@@ -4,9 +4,9 @@ namespace HealthyPets.API.Patients.Domain.Repositories;
 
 public interface IPetsRepository
 {
-    Task<IEnumerable<Pets>> ListAsync();
-    Task AddAsync(Pets pet);
-    Task<Pets> FindByIdAsync(int id);
-    void Update(Pets pet);
-    void Remove(Pets pet);
+    Task<IEnumerable<Pet>> ListAsync();
+    Task AddAsync(Pet pet);
+    Task<Pet> FindByIdAsync(int id);
+    void Update(Pet pet);
+    void Remove(Pet pet);
 }

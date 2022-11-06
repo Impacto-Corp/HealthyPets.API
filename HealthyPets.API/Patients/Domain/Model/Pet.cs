@@ -1,6 +1,6 @@
 ﻿namespace HealthyPets.API.Patients.Domain.Model;
 
-public class Pets
+public class Pet
 {
     public int Id { get; set; }
     public string Name{ get; set; }

@@ -8,7 +8,7 @@ public class PetsService : IPetsService
 {
     private readonly IPetsRepository _petsRepository;
     
-    public async Task<IEnumerable<Pets>> ListAsync()
+    public async Task<IEnumerable<Pet>> ListAsync()
     {
         return await _petsRepository.ListAsync();
     }
