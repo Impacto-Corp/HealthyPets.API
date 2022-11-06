@@ -6,7 +6,7 @@ using HealthyPets.API.Profiles.Resource;
 using HealthyPets.API.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HealthyPets.API.Profiles.Controllers;
+namespace HealthyPets.API.Profiles.Interfaces.Rest.Controllers;
 [ApiController]
 [Route("/api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
@@ -43,8 +43,8 @@ public class ClientController:ControllerBase
         if (!result.Success)
             return BadRequest(result.Message);
 
-        var evaluationResource = _mapper.Map<Client, ClientResource>(result.Resource);
-        return Created(nameof(PostAsync), evaluationResource);
+        var clientResource = _mapper.Map<Client, ClientResource>(result.Resource);
+        return Created(nameof(PostAsync), clientResource);
     }
 
     [HttpPut("{id}")]
