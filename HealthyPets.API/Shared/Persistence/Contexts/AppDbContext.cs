@@ -2,6 +2,7 @@ using HealthyPets.API.Appointments.Domain.Model;
 using HealthyPets.API.MedicalRecords.Domain;
 using HealthyPets.API.MedicalRecords.Domain.Models;
 using HealthyPets.API.Profiles.Domain.Model;
+using HealthyPets.API.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HealthyPets.API.Shared.Persistence.Contexts;
@@ -68,6 +69,6 @@ public class AppDbContext:DbContext
 
 
 
-
+        builder.UseSnakeCaseNamingConvention();
     }
 }
