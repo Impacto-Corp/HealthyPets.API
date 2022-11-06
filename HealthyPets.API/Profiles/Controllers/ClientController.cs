@@ -59,18 +59,18 @@ public class ClientController:ControllerBase
         if (!result.Success)
             return BadRequest(result.Message);
         var clientResource = _mapper.Map<Client, ClientResource>(result.Resource);
-        return Ok(evaluationResource);
+        return Ok(clientResource);
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
-        var result = await _evaluationService.DeleteAsync(id);
+        var result = await _clientService.DeleteAsync(id);
         if (!result.Success)
             return BadRequest(result.Message);
 
-        var evaluationResource = _mapper.Map<Evaluation, EvaluationResource>(result.Resource);
-        return Ok(evaluationResource);
+        var clientResource = _mapper.Map<Client, ClientResource>(result.Resource);
+        return Ok(clientResource);
     }
     
 }
