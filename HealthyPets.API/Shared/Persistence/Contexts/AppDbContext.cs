@@ -11,6 +11,7 @@ public class AppDbContext:DbContext
     public DbSet<Evaluation> Evaluation { get; set; }
     public DbSet<Appointment> Appointment { get; set; }
     public DbSet<Client> Clients { get; set; }
+    public DbSet<Doctor> Doctors { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
         
@@ -54,13 +55,13 @@ public class AppDbContext:DbContext
        builder.Entity<Client>().Property(p => p.Name)
            .IsRequired().HasMaxLength(40);
        // -------------------------- Doctor Entity ----------------------------
-       builder.Entity<Doctor>().ToTable("Clients");
+       builder.Entity<Doctor>().ToTable("Doctors");
        builder.Entity<Doctor>().HasKey(p => p.Id);
        builder.Entity<Doctor>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
        builder.Entity<Doctor>().Property(p => p.Name)
            .IsRequired().HasMaxLength(40);
        // -------------------------- Veterinary Entity ----------------------------
-       builder.Entity<Veterinary>().ToTable("Clients");
+       builder.Entity<Veterinary>().ToTable("Veterinary");
        builder.Entity<Veterinary>().HasKey(p => p.Id);
        builder.Entity<Veterinary>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
        builder.Entity<Veterinary>().Property(p => p.Name)
