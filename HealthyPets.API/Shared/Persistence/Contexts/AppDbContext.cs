@@ -13,7 +13,7 @@ public class AppDbContext:DbContext
     public DbSet<Client> Clients { get; set; }
     public DbSet<Doctor> Doctors { get; set; }
     
-    public DbSet<Veterinary> Veterinaries { get; set; }
+    public DbSet<Vet> Vets { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
         
@@ -63,10 +63,10 @@ public class AppDbContext:DbContext
        builder.Entity<Doctor>().Property(p => p.Name)
            .IsRequired().HasMaxLength(40);
        // -------------------------- Veterinary Entity ----------------------------
-       builder.Entity<Veterinary>().ToTable("Veterinaries");
-       builder.Entity<Veterinary>().HasKey(p => p.Id);
-       builder.Entity<Veterinary>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-       builder.Entity<Veterinary>().Property(p => p.Name)
+       builder.Entity<Vet>().ToTable("Veterinaries");
+       builder.Entity<Vet>().HasKey(p => p.Id);
+       builder.Entity<Vet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+       builder.Entity<Vet>().Property(p => p.Name)
            .IsRequired().HasMaxLength(40);
 
 

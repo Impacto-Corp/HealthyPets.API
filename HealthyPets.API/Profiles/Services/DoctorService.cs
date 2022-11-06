@@ -34,7 +34,8 @@ public class DoctorService: IDoctorServices
         catch (Exception e)
         {
             return new DoctorResponse($"An error occurred while saving the doctor: {e.Message}");
-        }    }
+        }    
+    }
 
     public async Task<DoctorResponse> UpdateAsync(int id, Doctor doctor)
     {

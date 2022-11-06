@@ -19,7 +19,9 @@ public class DoctorRepository : BaseRepository, IDoctorRepository
 
     public async Task AddAsync(Doctor doctor)
     {
-        await _context.Doctors.AddAsync(doctor);    }
+        await _context.Doctors.AddAsync(doctor);
+        
+    }
 
     public async Task<Doctor> FindByIdAsync(int id)
     {

@@ -3,13 +3,13 @@ using HealthyPets.API.Shared.Domain.Services.Communication;
 
 namespace HealthyPets.API.Profiles.Domain.Services.Communication;
 
-public class VeterinaryResponse: BaseResponse<Veterinary>
+public class VetResponse: BaseResponse<Vet>
 {
-    public VeterinaryResponse(string message) : base(message)
+    public VetResponse(string message) : base(message)
     {
     }
 
-    public VeterinaryResponse(Veterinary resource) : base(resource)
+    public VetResponse(Vet resource) : base(resource)
     {
     }
 }
