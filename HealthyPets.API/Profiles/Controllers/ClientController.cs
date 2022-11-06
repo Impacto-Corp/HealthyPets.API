@@ -1,9 +1,12 @@
-﻿using HealthyPets.API.Profiles.Domain.Model;
+﻿using System.Net.Mime;
+using HealthyPets.API.Profiles.Domain.Model;
 using HealthyPets.API.Profiles.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthyPets.API.Profiles.Controllers;
-
+[ApiController]
+[Route("/api/v1/[controller]")]
+[Produces(MediaTypeNames.Application.Json)]
 public class ClientController:ControllerBase
 
 {
