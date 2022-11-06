@@ -4,5 +4,5 @@ namespace HealthyPets.API.Patients.Domain.Services;
 
 public interface IPetsService
 {
-    Task<IEnumerable<Pets>> ListAsync();
+    Task<IEnumerable<Pet>> ListAsync();
 }
