@@ -21,7 +21,6 @@
       <Folder Include="MedicalRecords\Mapping" />
       <Folder Include="MedicalRecords\Services" />
       <Folder Include="Patients\Mapping" />
-      <Folder Include="Profiles\Controllers" />
       <Folder Include="Profiles\Interfaces\Internal" />
       <Folder Include="Shared\Extensions" />
       <Folder Include="Social\Domain" />
