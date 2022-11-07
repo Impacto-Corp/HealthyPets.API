@@ -1,6 +1,7 @@
 using HealthyPets.API.Appointments.Domain.Model;
 using HealthyPets.API.MedicalRecords.Domain;
 using HealthyPets.API.MedicalRecords.Domain.Models;
+using HealthyPets.API.Patients.Domain.Model;
 using HealthyPets.API.Profiles.Domain.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ public class AppDbContext:DbContext
     public DbSet<Appointment> Appointments { get; set; }
     public DbSet<Client> Clients { get; set; }
     public DbSet<Doctor> Doctors { get; set; }
-    
+    public DbSet<Pet> Pets { get; set; }
     public DbSet<Vet> Vets { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
