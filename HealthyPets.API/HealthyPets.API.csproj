@@ -20,9 +20,6 @@
       <Folder Include="MedicalRecords\Domain\Services\Comunication" />
       <Folder Include="MedicalRecords\Mapping" />
       <Folder Include="MedicalRecords\Services" />
-      <Folder Include="Social\Domain" />
-      <Folder Include="Social\Interfaces" />
-      <Folder Include="Social\Services" />
     </ItemGroup>
 
 </Project>
