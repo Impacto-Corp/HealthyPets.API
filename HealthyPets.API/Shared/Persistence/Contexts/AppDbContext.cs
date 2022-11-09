@@ -64,7 +64,7 @@ public class AppDbContext:DbContext
        builder.Entity<Doctor>().Property(p => p.Name)
            .IsRequired().HasMaxLength(40);
        // -------------------------- Veterinary Entity ----------------------------
-       builder.Entity<Vet>().ToTable("Veterinaries");
+       builder.Entity<Vet>().ToTable("Veterinraies");
        builder.Entity<Vet>().HasKey(p => p.Id);
        builder.Entity<Vet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
        builder.Entity<Vet>().Property(p => p.Name)
