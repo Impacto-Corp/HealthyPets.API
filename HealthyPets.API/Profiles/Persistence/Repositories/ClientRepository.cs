@@ -21,6 +21,10 @@ public class ClientRepository:BaseRepository, IClientRepository
     {
      await _context.Clients.AddAsync(client);
     }
+    public async Task<Mechanic> FindByIdAsync(long id)
+    {
+        return await _context.Mechanics.FindAsync(id);
+    }
 
     public async Task<Client> FindByIdAsync(int id)
     {
