@@ -55,7 +55,9 @@ public class AppDbContext:DbContext
        builder.Entity<Client>().ToTable("Clients");
        builder.Entity<Client>().HasKey(p => p.Id);
        builder.Entity<Client>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-       builder.Entity<Client>().Property(p => p.Name)
+       builder.Entity<Client>().Property(p => p.Name);
+       builder.Entity<Client>().Property(p => p.UserId)
+    
            .IsRequired().HasMaxLength(40);
        // -------------------------- Doctor Entity ----------------------------
        builder.Entity<Doctor>().ToTable("Doctors");
