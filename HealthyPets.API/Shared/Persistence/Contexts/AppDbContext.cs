@@ -33,10 +33,10 @@ public class AppDbContext:DbContext
         //Evaluation Configuration 
         builder.Entity<Evaluation>().ToTable("Evaluations");
         builder.Entity<Evaluation>().HasKey(p => p.Id);
-        builder.Entity<Evaluation>().Property(p => p.Id)
-            .IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Evaluation>().Property(p => p.Name)
-            .IsRequired().HasMaxLength(40);
+        builder.Entity<Evaluation>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Evaluation>().Property(p => p.Name).IsRequired().HasMaxLength(40);
+        builder.Entity<Evaluation>().Property(p => p.Time).IsRequired();
+        builder.Entity<Evaluation>().Property(p => p.Report).IsRequired().HasMaxLength(200);
 
         //Fluent API
         
