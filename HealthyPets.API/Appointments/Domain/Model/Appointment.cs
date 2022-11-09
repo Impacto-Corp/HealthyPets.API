@@ -11,6 +11,12 @@ public class Appointment
     public DateTime Date { get; set; }
     public Client Client { get; set; }
     public Pet Pet { get; set; }
+    
+    public Veterinary Vet { get; set; }
     public Evaluation Evaluation { get; set; }
+    
+    public double Cost { get; set; }
+    
+    public Doctor Doctor { get; set; }
     
 }
