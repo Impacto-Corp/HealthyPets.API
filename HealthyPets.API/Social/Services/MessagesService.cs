@@ -29,13 +29,46 @@ public class MessagesService : IMessagesService
         }
     }
 
-    public Task<MessageResponse> UpdateAsync(int id, Messages messages)
+    public async Task<MessageResponse> UpdateAsync(int id, Messages messages)
     {
-        throw new NotImplementedException();
+        var existingMess = await _messagesRepository.FindByIdAsync(id);
+        if (existingMess==null)
+        {
+            return new MessageResponse("Evaluation not found.");
+        }
+
+        existingMess.Message = messages.Message;
+        try
+        {
+            _messagesRepository.Update(existingMess);
+            await _unitOfWork.CompleteAsync();
+
+            return new MessageResponse(existingMess);
+        }
+        catch (Exception e)
+        {
+            return new MessageResponse($"An error occurred while updating the evaluation");
+        }
     }
 
-    public Task<MessageResponse> DeleteAsync(int id)
+    public async Task<MessageResponse> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var existingMess = await _messagesRepository.FindByIdAsync(id);
+        if (existingMess == null)
+        {
+            return new MessageResponse("Evaluation not found.");
+        }
+
+        try
+        {
+            _messagesRepository.Remove(existingMess);
+            await _unitOfWork.CompleteAsync();
+            return new MessageResponse(existingMess);
+
+        }
+        catch (Exception e)
+        {
+            return new MessageResponse($"An error occurred while deleting the category:{e.Message}");
+        }
     }
 }

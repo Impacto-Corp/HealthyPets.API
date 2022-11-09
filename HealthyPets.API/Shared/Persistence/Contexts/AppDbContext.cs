@@ -4,6 +4,7 @@ using HealthyPets.API.MedicalRecords.Domain.Models;
 using HealthyPets.API.Patients.Domain.Model;
 using HealthyPets.API.Profiles.Domain.Model;
 using HealthyPets.API.Shared.Extensions;
+using HealthyPets.API.Social.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HealthyPets.API.Shared.Persistence.Contexts;
@@ -49,6 +50,11 @@ public class AppDbContext:DbContext
         builder.Entity<Pet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Pet>().Property(p => p.Name).IsRequired().HasMaxLength(20);
         builder.Entity<Pet>().Property(p => p.Species).IsRequired().HasMaxLength(30);
+
+        builder.Entity<Messages>().ToTable("Messages");
+        builder.Entity<Messages>().HasKey(p => p.Id);
+        builder.Entity<Messages>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Messages>().Property(p => p.Message).IsRequired().HasMaxLength(350);
             //Relationships
         //builder.Entity<Appointment>().HasMany(p=>p.Evaluation).WithOne(p=>p.Appo)
         //builder.Entity<Appointment>().HasMany(p=>p.Pet).WithOne(p=>p.Appo)
