@@ -2,6 +2,7 @@
 using HealthyPets.API.Shared.Persistence.Repositories;
 using HealthyPets.API.Social.Domain.Models;
 using HealthyPets.API.Social.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace HealthyPets.API.Social.Persistence.Repositories;
 
@@ -13,26 +14,26 @@ public class MessagesRepository : BaseRepository, IMessagesRepository
 
     public async Task<IEnumerable<Messages>> ListAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Messages.ToListAsync();
     }
 
     public async Task AddAsync(Messages messages)
     {
-        throw new NotImplementedException();
+        await _context.Messages.AddAsync(messages);
     }
 
     public async Task<Messages> FindByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Messages.FindAsync(id);
     }
 
     public async void Update(Messages messages)
     {
-        throw new NotImplementedException();
+        _context.Messages.Update(messages);
     }
 
     public async void Remove(Messages messages)
     {
-        throw new NotImplementedException();
+        _context.Messages.Remove(messages);
     }
 }
