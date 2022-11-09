@@ -8,4 +8,6 @@ public class Client
     public int Id { get; set; }
     public string Name{ get; set; }
     public Pet Pet{ get; set; }
+    
+    public long UserId { get; set; }
 }
