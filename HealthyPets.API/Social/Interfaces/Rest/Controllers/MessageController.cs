@@ -11,52 +11,52 @@ namespace HealthyPets.API.Social.Interfaces.Rest.Controllers;
 [ApiController]
 [Route("/api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-public class MessagesController : ControllerBase
+public class MessageController : ControllerBase
 {
-    private readonly IMessagesService _messagesService;
+    private readonly IMessageService _messagesService;
     private readonly IMapper _mapper;
     
-    public MessagesController(IMessagesService messagesService, IMapper mapper)
+    public MessageController(IMessageService messagesService, IMapper mapper)
     {
         _messagesService = messagesService;
         _mapper=mapper;
     }
 
     [HttpGet]
-    public async Task<IEnumerable<Messages>> GetAllAsync()
+    public async Task<IEnumerable<Message>> GetAllAsync()
     {
         var message = await _messagesService.ListAsync();
         return message;
     }
     
     [HttpPost]
-    public async Task<IActionResult> PostAsync([FromBody] SaveMessagesResource resource)
+    public async Task<IActionResult> PostAsync([FromBody] SaveMessageResource resource)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
 
-        var evaluation = _mapper.Map<SaveMessagesResource, Messages>(resource);
+        var evaluation = _mapper.Map<SaveMessageResource, Message>(resource);
         var result = await _messagesService.SaveAsync(evaluation);
 
         if (!result.Success)
             return BadRequest(result.Message);
 
-        var evaluationResource = _mapper.Map<Messages, SaveMessagesResource>(result.Resource);
+        var evaluationResource = _mapper.Map<Message, SaveMessageResource>(result.Resource);
         return Created(nameof(PostAsync), evaluationResource);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveMessagesResource resource)
+    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveMessageResource resource)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
 
-        var evaluation = _mapper.Map<SaveMessagesResource, Messages>(resource);
+        var evaluation = _mapper.Map<SaveMessageResource, Message>(resource);
         var result = await _messagesService.UpdateAsync(id, evaluation);
 
         if (!result.Success)
             return BadRequest(result.Message);
-        var evaluationResource = _mapper.Map<Messages, MessagesResource>(result.Resource);
+        var evaluationResource = _mapper.Map<Message, MessageResource>(result.Resource);
         return Ok(evaluationResource);
     }
 
@@ -67,7 +67,7 @@ public class MessagesController : ControllerBase
         if (!result.Success)
             return BadRequest(result.Message);
 
-        var evaluationResource = _mapper.Map<Messages, MessagesResource>(result.Resource);
+        var evaluationResource = _mapper.Map<Message, MessageResource>(result.Resource);
         return Ok(evaluationResource);
     }
 }

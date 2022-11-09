@@ -2,7 +2,7 @@
 
 namespace HealthyPets.API.Social.Resources;
 
-public class SaveMessagesResource
+public class SaveMessageResource
 {
     [Required]
     public string Message { get; set; }

@@ -3,10 +3,10 @@ using HealthyPets.API.Social.Domain.Services.Communication;
 
 namespace HealthyPets.API.Social.Domain.Services;
 
-public interface IMessagesService
+public interface IMessageService
 {
-    Task<IEnumerable<Messages>> ListAsync();
-    Task<MessageResponse> SaveAsync(Messages messages);
-    Task<MessageResponse> UpdateAsync(int id, Messages messages);
+    Task<IEnumerable<Message>> ListAsync();
+    Task<MessageResponse> SaveAsync(Message message);
+    Task<MessageResponse> UpdateAsync(int id, Message message);
     Task<MessageResponse> DeleteAsync(int id);
 }

@@ -3,13 +3,13 @@ using HealthyPets.API.Social.Domain.Models;
 
 namespace HealthyPets.API.Social.Domain.Services.Communication;
 
-public class MessageResponse : BaseResponse<Messages>
+public class MessageResponse : BaseResponse<Message>
 {
     public MessageResponse(string message) : base(message)
     {
     }
 
-    public MessageResponse(Messages resource) : base(resource)
+    public MessageResponse(Message resource) : base(resource)
     {
     }
 }

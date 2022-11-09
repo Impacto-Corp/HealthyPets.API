@@ -6,22 +6,22 @@ using HealthyPets.API.Social.Domain.Services.Communication;
 
 namespace HealthyPets.API.Social.Services;
 
-public class MessagesService : IMessagesService
+public class MessageService : IMessageService
 {
-    private readonly IMessagesRepository _messagesRepository;
+    private readonly IMessageRepository _messagesRepository;
     private readonly IUnitOfWork _unitOfWork;
-    public async Task<IEnumerable<Messages>> ListAsync()
+    public async Task<IEnumerable<Message>> ListAsync()
     {
         return await _messagesRepository.ListAsync();
     }
 
-    public async Task<MessageResponse> SaveAsync(Messages messages)
+    public async Task<MessageResponse> SaveAsync(Message message)
     {
         try
         {
-            await _messagesRepository.AddAsync(messages);
+            await _messagesRepository.AddAsync(message);
             await _unitOfWork.CompleteAsync();
-            return new MessageResponse(messages);
+            return new MessageResponse(message);
         }
         catch (Exception e)
         {
@@ -29,7 +29,7 @@ public class MessagesService : IMessagesService
         }
     }
 
-    public async Task<MessageResponse> UpdateAsync(int id, Messages messages)
+    public async Task<MessageResponse> UpdateAsync(int id, Message message)
     {
         var existingMess = await _messagesRepository.FindByIdAsync(id);
         if (existingMess==null)
@@ -37,7 +37,7 @@ public class MessagesService : IMessagesService
             return new MessageResponse("Evaluation not found.");
         }
 
-        existingMess.Message = messages.Message;
+        existingMess.Content = message.Content;
         try
         {
             _messagesRepository.Update(existingMess);
