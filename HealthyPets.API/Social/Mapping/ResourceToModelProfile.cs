@@ -6,7 +6,7 @@ namespace HealthyPets.API.Social.Mapping;
 
 public class ResourceToModelProfile : Profile
 {
-    protected ResourceToModelProfile()
+    public ResourceToModelProfile()
     {
         CreateMap<SaveMessageResource, Message>();
     }
