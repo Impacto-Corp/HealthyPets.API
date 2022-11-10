@@ -12,21 +12,21 @@ namespace HealthyPets.API.Patients.Interfaces.Rest.Controllers;
 [ApiController]
 [Route("/api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-public class PetsController : ControllerBase
+public class PetController : ControllerBase
 {
-    private readonly IPetsService _petsService;
+    private readonly IPetService _petService;
     private readonly IMapper _mapper;
     
-    public PetsController(IPetsService petsService, IMapper mapper)
+    public PetController(IPetService petService, IMapper mapper)
     {
-        _petsService = petsService;
+        _petService = petService;
         _mapper=mapper;
     }
 
     [HttpGet]
     public async Task<IEnumerable<Pet>> GetAllAsync()
     {
-        var pets = await _petsService.ListAsync();
+        var pets = await _petService.ListAsync();
         return pets;
     }
     
@@ -37,7 +37,7 @@ public class PetsController : ControllerBase
             return BadRequest(ModelState.GetErrorMessages());
 
         var evaluation = _mapper.Map<SavePetResource, Pet>(resource);
-        var result = await _petsService.SaveAsync(evaluation);
+        var result = await _petService.SaveAsync(evaluation);
 
         if (!result.Success)
             return BadRequest(result.Message);
@@ -53,7 +53,7 @@ public class PetsController : ControllerBase
             return BadRequest(ModelState.GetErrorMessages());
 
         var evaluation = _mapper.Map<SavePetResource, Pet>(resource);
-        var result = await _petsService.UpdateAsync(id, evaluation);
+        var result = await _petService.UpdateAsync(id, evaluation);
 
         if (!result.Success)
             return BadRequest(result.Message);
@@ -64,7 +64,7 @@ public class PetsController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
-        var result = await _petsService.DeleteAsync(id);
+        var result = await _petService.DeleteAsync(id);
         if (!result.Success)
             return BadRequest(result.Message);
 

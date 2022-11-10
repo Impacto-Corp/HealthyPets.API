@@ -2,6 +2,10 @@ using HealthyPets.API.Appointments.Domain.Repositories;
 using HealthyPets.API.Appointments.Domain.Service;
 using HealthyPets.API.Appointments.Persistence.Repositories;
 using HealthyPets.API.Appointments.Services;
+using HealthyPets.API.Patients.Domain.Repositories;
+using HealthyPets.API.Patients.Domain.Services;
+using HealthyPets.API.Patients.Persistence.Repositories;
+using HealthyPets.API.Patients.Services;
 using HealthyPets.API.Shared.Domain.Repositories;
 using HealthyPets.API.Shared.Persistence.Contexts;
 using HealthyPets.API.Shared.Persistence.Repositories;
@@ -35,10 +39,14 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IPetService, PetService>();
 
 builder.Services.AddAutoMapper(
     typeof(HealthyPets.API.Appointments.Mapping.ModelToResourceProfile),
-    typeof(HealthyPets.API.Appointments.Mapping.ResourceToModelProfile));
+    typeof(HealthyPets.API.Appointments.Mapping.ResourceToModelProfile),
+    typeof(HealthyPets.API.Patients.Mapping.ModelToResourceProfile),
+    typeof(HealthyPets.API.Patients.Mapping.ResourceToModelProfile));
 
 
 

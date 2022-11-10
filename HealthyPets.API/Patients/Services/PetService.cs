@@ -6,21 +6,21 @@ using HealthyPets.API.Shared.Domain.Repositories;
 
 namespace HealthyPets.API.Patients.Services;
 
-public class PetsService : IPetsService
+public class PetService : IPetService
 {
-    private readonly IPetsRepository _petsRepository;
+    private readonly IPetRepository _petRepository;
     private readonly IUnitOfWork _unitOfWork;
     
     public async Task<IEnumerable<Pet>> ListAsync()
     {
-        return await _petsRepository.ListAsync();
+        return await _petRepository.ListAsync();
     }
 
     public async Task<PetResponse> SaveAsync(Pet pet)
     {
         try
         {
-            await _petsRepository.AddAsync(pet);
+            await _petRepository.AddAsync(pet);
             await _unitOfWork.CompleteAsync();
             return new PetResponse(pet);
         }
@@ -32,7 +32,7 @@ public class PetsService : IPetsService
 
     public async Task<PetResponse> UpdateAsync(int id, Pet pet)
     {
-        var existingPet = await _petsRepository.FindByIdAsync(id);
+        var existingPet = await _petRepository.FindByIdAsync(id);
         if (existingPet==null)
         {
             return new PetResponse("Evaluation not found.");
@@ -41,7 +41,7 @@ public class PetsService : IPetsService
         existingPet.Name = pet.Name;
         try
         {
-            _petsRepository.Update(existingPet);
+            _petRepository.Update(existingPet);
             await _unitOfWork.CompleteAsync();
 
             return new PetResponse(existingPet);
@@ -54,7 +54,7 @@ public class PetsService : IPetsService
 
     public async Task<PetResponse> DeleteAsync(int id)
     {
-        var existingPet = await _petsRepository.FindByIdAsync(id);
+        var existingPet = await _petRepository.FindByIdAsync(id);
         if (existingPet == null)
         {
             return new PetResponse("Evaluation not found.");
@@ -62,7 +62,7 @@ public class PetsService : IPetsService
 
         try
         {
-            _petsRepository.Remove(existingPet);
+            _petRepository.Remove(existingPet);
             await _unitOfWork.CompleteAsync();
             return new PetResponse(existingPet);
 

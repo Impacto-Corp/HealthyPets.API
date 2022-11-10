@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthyPets.API.Patients.Persistence.Repositories;
 
-public class PetRepository : BaseRepository, IPetsRepository
+public class PetRepository : BaseRepository, IPetRepository
 {
     public PetRepository(AppDbContext context) : base(context)
     {
