@@ -15,8 +15,10 @@ public class Appointment
     public Veterinary Vet { get; set; }
     public Evaluation Evaluation { get; set; }
     
-    public double Cost { get; set; }
+    
     
     public Doctor Doctor { get; set; }
+    
+    public string AppointmentStatus  { get; set; }
     
 }
