@@ -14,7 +14,8 @@ public class EvaluationRepository: BaseRepository, IEvaluationRepository
 
     public async Task<IEnumerable<Evaluation>> ListAsync()
     {
-        return await _context.Evaluations.ToListAsync();
+        return await _context.Evaluations.Include(p => p.Client)
+            .ToListAsync();
     }
 
     public async Task AddAsync(Evaluation evaluation)
@@ -24,7 +25,16 @@ public class EvaluationRepository: BaseRepository, IEvaluationRepository
 
     public async Task<Evaluation> FindByIdAsync(int id)
     {
-        return await _context.Evaluations.FindAsync(id);
+        return await _context.Evaluations.Include(p => p.Client)
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
+
+    public async Task<IEnumerable<Evaluation>> FindByClientIdAsync(int clientId)
+    {
+        return await _context.Evaluations
+            .Where(p => p.ClientId == clientId)
+            .Include(p => p.Client)
+            .ToListAsync();
     }
 
     public void Update(Evaluation evaluation)

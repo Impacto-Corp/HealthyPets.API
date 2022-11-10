@@ -6,7 +6,7 @@ namespace HealthyPets.API.MedicalRecords.Mapping;
 
 public class ModelToResourceProfile: Profile
 {
-    protected ModelToResourceProfile()
+    public ModelToResourceProfile()
     {
         CreateMap<Evaluation, EvaluationResource>();
     }

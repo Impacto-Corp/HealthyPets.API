@@ -38,6 +38,11 @@ public class AppDbContext:DbContext
         builder.Entity<Evaluation>().Property(p => p.Time).IsRequired();
         builder.Entity<Evaluation>().Property(p => p.Report).IsRequired().HasMaxLength(200);
 
+        builder.Entity<Client>()
+            .HasMany(p => p.Evaluations)
+            .WithOne(p => p.Client)
+            .HasForeignKey(p => p.ClientId);
+
         //Fluent API
         
         
