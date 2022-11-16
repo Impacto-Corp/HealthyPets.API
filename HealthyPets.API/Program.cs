@@ -39,14 +39,10 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-builder.Services.AddScoped<IPetRepository, PetRepository>();
-builder.Services.AddScoped<IPetService, PetService>();
 
 builder.Services.AddAutoMapper(
     typeof(HealthyPets.API.Appointments.Mapping.ModelToResourceProfile),
-    typeof(HealthyPets.API.Appointments.Mapping.ResourceToModelProfile),
-    typeof(HealthyPets.API.Patients.Mapping.ModelToResourceProfile),
-    typeof(HealthyPets.API.Patients.Mapping.ResourceToModelProfile));
+    typeof(HealthyPets.API.Appointments.Mapping.ResourceToModelProfile));
 
 
 

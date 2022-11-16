@@ -48,23 +48,25 @@ public class AppDbContext:DbContext
         builder.Entity<Appointment>().HasKey(p => p.Id);
         builder.Entity<Appointment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Appointment>().Property(p => p.Date).IsRequired();
-
+        
+        //--------------------------- Pet Entity ------------------------------------
         builder.Entity<Pet>().ToTable("Pets");
         builder.Entity<Pet>().HasKey(p => p.Id);
         builder.Entity<Pet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Pet>().Property(p => p.Name).IsRequired().HasMaxLength(20);
         builder.Entity<Pet>().Property(p => p.Species).IsRequired().HasMaxLength(30);
-
+        builder.Entity<Pet>().HasMany(p => p.Record).WithOne(p => p.Pet);
+        builder.Entity<Pet>().HasOne(p => p.Owner).WithOne(p => p.Pet);
+        builder.Entity<Pet>().HasOne(p => p.Appointment).WithOne(p => p.Pet);
+        
+        //--------------------------- Message Entity --------------------------------
         builder.Entity<Message>().ToTable("Messages");
         builder.Entity<Message>().HasKey(p => p.Id);
         builder.Entity<Message>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Message>().Property(p => p.Content).IsRequired().HasMaxLength(350);
-            //Relationships
-        //builder.Entity<Appointment>().HasMany(p=>p.Evaluation).WithOne(p=>p.Appo)
-        //builder.Entity<Appointment>().HasMany(p=>p.Pet).WithOne(p=>p.Appo)
-
-
-// -------------------------- Client Entity ----------------------------
+        builder.Entity<Message>().HasOne(p => p.User).WithOne(p => p.Comment);
+        
+        // -------------------------- Client Entity ----------------------------
         builder.Entity<Client>().ToTable("Clients");
         builder.Entity<Client>().HasKey(p => p.Id);
         builder.Entity<Client>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
