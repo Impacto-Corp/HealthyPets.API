@@ -56,9 +56,24 @@ public class AppDbContext:DbContext
        builder.Entity<Client>().HasKey(p => p.Id);
        builder.Entity<Client>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
        builder.Entity<Client>().Property(p => p.Name);
+       builder.Entity<Client>().Property(p => p.LastName);
+       builder.Entity<Client>().Property(p => p.Email);
+       builder.Entity<Client>().Property(p => p.Address);
+       builder.Entity<Client>().Property(p => p.Ruc);
+       builder.Entity<Client>().Property(p => p.Phone);
+
        builder.Entity<Client>().Property(p => p.UserId)
-    
            .IsRequired().HasMaxLength(40);
+       
+       //Relationships
+       builder.Entity<Client>()
+           .HasMany(p => p.Appointments)
+           .WithOne(p => p.Client)
+           .HasForeignKey(p =>p.ClientId);
+
+         
+    
+           
        // -------------------------- Doctor Entity ----------------------------
        builder.Entity<Doctor>().ToTable("Doctors");
        builder.Entity<Doctor>().HasKey(p => p.Id);
