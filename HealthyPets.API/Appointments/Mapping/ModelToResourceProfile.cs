@@ -9,5 +9,6 @@ public class ModelToResourceProfile : Profile
     public ModelToResourceProfile()
     {       //      < origen, destino >
         CreateMap<Appointment, AppointmentResource>();
+        CreateMap<Exam, ExamResource>();
     }
 }
