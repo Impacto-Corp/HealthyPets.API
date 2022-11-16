@@ -45,6 +45,11 @@ public class AppDbContext:DbContext
         builder.Entity<Appointment>().Property(p => p.Date).IsRequired();
         
 
+        // -------------------------- Exam Entity ----------------------------
+        builder.Entity<Exam>().ToTable("Appointments");
+        builder.Entity<Exam>().HasKey(p => p.Id);
+        builder.Entity<Exam>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Exam>().Property(p => p.Date).IsRequired();
         
         
         
