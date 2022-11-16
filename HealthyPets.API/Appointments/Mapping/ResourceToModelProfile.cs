@@ -6,7 +6,7 @@ namespace HealthyPets.API.Appointments.Mapping;
 
 public class ResourceToModelProfile : Profile
 {
-    protected ResourceToModelProfile()
+    public ResourceToModelProfile()
     {
         CreateMap<SaveAppointmentResource, Appointment>();
     }
