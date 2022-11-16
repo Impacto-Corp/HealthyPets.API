@@ -12,6 +12,9 @@ public class AppDbContext:DbContext
 {
     public DbSet<Evaluation> Evaluations { get; set; }
     public DbSet<Appointment> Appointments { get; set; }
+    
+    public DbSet<Exam> Exams { get; set; }
+    
     public DbSet<Pet> Pets { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
@@ -46,7 +49,7 @@ public class AppDbContext:DbContext
         
 
         // -------------------------- Exam Entity ----------------------------
-        builder.Entity<Exam>().ToTable("Appointments");
+        builder.Entity<Exam>().ToTable("Exams");
         builder.Entity<Exam>().HasKey(p => p.Id);
         builder.Entity<Exam>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Exam>().Property(p => p.Date).IsRequired();
