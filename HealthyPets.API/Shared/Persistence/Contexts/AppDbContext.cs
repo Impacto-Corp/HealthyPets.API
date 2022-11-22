@@ -4,6 +4,7 @@ using HealthyPets.API.MedicalRecords.Domain.Models;
 using HealthyPets.API.Patients.Domain.Model;
 using HealthyPets.API.Profiles.Domain.Model;
 using HealthyPets.API.Shared.Extensions;
+using HealthyPets.API.Social.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HealthyPets.API.Shared.Persistence.Contexts;
@@ -12,10 +13,11 @@ public class AppDbContext:DbContext
 {
     public DbSet<Evaluation> Evaluations { get; set; }
     public DbSet<Appointment> Appointments { get; set; }
-    
-    public DbSet<Exam> Exams { get; set; }
-    
+    public DbSet<Client> Clients { get; set; }
+    public DbSet<Doctor> Doctors { get; set; }
     public DbSet<Pet> Pets { get; set; }
+    public DbSet<Vet> Vets { get; set; }
+    public DbSet<Messages> Messages { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
         
@@ -31,10 +33,15 @@ public class AppDbContext:DbContext
         //Evaluation Configuration 
         builder.Entity<Evaluation>().ToTable("Evaluations");
         builder.Entity<Evaluation>().HasKey(p => p.Id);
-        builder.Entity<Evaluation>().Property(p => p.Id)
-            .IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Evaluation>().Property(p => p.Name)
-            .IsRequired().HasMaxLength(40);
+        builder.Entity<Evaluation>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Evaluation>().Property(p => p.Name).IsRequired().HasMaxLength(40);
+        builder.Entity<Evaluation>().Property(p => p.Time).IsRequired();
+        builder.Entity<Evaluation>().Property(p => p.Report).IsRequired().HasMaxLength(200);
+
+        builder.Entity<Client>()
+            .HasMany(p => p.Evaluations)
+            .WithOne(p => p.Client)
+            .HasForeignKey(p => p.ClientId);
 
         //Fluent API
         
@@ -46,26 +53,20 @@ public class AppDbContext:DbContext
         builder.Entity<Appointment>().HasKey(p => p.Id);
         builder.Entity<Appointment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Appointment>().Property(p => p.Date).IsRequired();
-        
 
-        // -------------------------- Exam Entity ----------------------------
-        builder.Entity<Exam>().ToTable("Exams");
-        builder.Entity<Exam>().HasKey(p => p.Id);
-        builder.Entity<Exam>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Exam>().Property(p => p.Date).IsRequired();
-        
-        
-        
-        
-        
         builder.Entity<Pet>().ToTable("Pets");
         builder.Entity<Pet>().HasKey(p => p.Id);
         builder.Entity<Pet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Pet>().Property(p => p.Name).IsRequired().HasMaxLength(20);
         builder.Entity<Pet>().Property(p => p.Species).IsRequired().HasMaxLength(30);
+
+        builder.Entity<Messages>().ToTable("Messages");
+        builder.Entity<Messages>().HasKey(p => p.Id);
+        builder.Entity<Messages>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Messages>().Property(p => p.Message).IsRequired().HasMaxLength(350);
             //Relationships
-            //builder.Entity<Appointment>().HasMany(p => p.Evaluation).WithOne(p => p.Appo);
-            //builder.Entity<Appointment>().HasMany(p => p.Pet).WithOne(p => p.Appo);
+        //builder.Entity<Appointment>().HasMany(p=>p.Evaluation).WithOne(p=>p.Appo)
+        //builder.Entity<Appointment>().HasMany(p=>p.Pet).WithOne(p=>p.Appo)
 
 
 // -------------------------- Client Entity ----------------------------
@@ -81,10 +82,10 @@ public class AppDbContext:DbContext
         builder.Entity<Doctor>().Property(p => p.Name)
             .IsRequired().HasMaxLength(40);
         // -------------------------- Veterinary Entity ----------------------------
-        builder.Entity<Veterinary>().ToTable("Veterinaries");
-        builder.Entity<Veterinary>().HasKey(p => p.Id);
-        builder.Entity<Veterinary>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Veterinary>().Property(p => p.Name)
+        builder.Entity<Vet>().ToTable("Veterinaries");
+        builder.Entity<Vet>().HasKey(p => p.Id);
+        builder.Entity<Vet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Vet>().Property(p => p.Name)
             .IsRequired().HasMaxLength(40);
 
 
