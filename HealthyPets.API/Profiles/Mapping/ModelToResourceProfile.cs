@@ -6,8 +6,11 @@ namespace HealthyPets.API.Profiles.Mapping;
 
 public class ModelToResourceProfile: Profile
 {
-    protected ModelToResourceProfile()
+    public ModelToResourceProfile()
     {
+
+        CreateMap<Doctor, DoctorResource>();
+        CreateMap<Vet, VetResource>();
         CreateMap<Client, ClientResource>();
     }
 }

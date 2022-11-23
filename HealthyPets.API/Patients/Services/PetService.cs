@@ -10,7 +10,13 @@ public class PetService : IPetService
 {
     private readonly IPetRepository _petRepository;
     private readonly IUnitOfWork _unitOfWork;
-    
+
+    public PetService(IPetRepository petRepository, IUnitOfWork unitOfWork)
+    {
+        _petRepository = petRepository;
+        _unitOfWork = unitOfWork;
+    }
+
     public async Task<IEnumerable<Pet>> ListAsync()
     {
         return await _petRepository.ListAsync();

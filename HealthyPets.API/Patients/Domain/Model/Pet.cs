@@ -10,6 +10,6 @@ public class Pet
     public string Name{ get; set; }
     public string Species { get; set; }
     public Client Owner { get; set; }
-    public List<Evaluation> Record { get; set; }
+    public IList<Evaluation> Record { get; set; }
     public Appointment Appointment { get; set; }
 }

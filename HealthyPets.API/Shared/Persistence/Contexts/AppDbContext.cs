@@ -55,9 +55,10 @@ public class AppDbContext:DbContext
         builder.Entity<Pet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Pet>().Property(p => p.Name).IsRequired().HasMaxLength(20);
         builder.Entity<Pet>().Property(p => p.Species).IsRequired().HasMaxLength(30);
-        builder.Entity<Pet>().HasMany(p => p.Record).WithOne(p => p.Pet);
-        builder.Entity<Pet>().HasOne(p => p.Owner).WithOne(p => p.Pet);
+        builder.Entity<Pet>().HasMany(p => p.Record).WithOne(p => p.Pet).HasForeignKey(P => P.Id );
+        builder.Entity<Pet>().HasOne(p => p.Owner).WithOne(p => p.Pet).HasForeignKey<Client >(P =>P.PetId);
         builder.Entity<Pet>().HasOne(p => p.Appointment).WithOne(p => p.Pet);
+        
         
         //--------------------------- Message Entity --------------------------------
         builder.Entity<Message>().ToTable("Messages");

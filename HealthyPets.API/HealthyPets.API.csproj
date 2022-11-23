@@ -20,11 +20,26 @@
       <Folder Include="MedicalRecords\Domain\Services\Comunication" />
       <Folder Include="MedicalRecords\Mapping" />
       <Folder Include="MedicalRecords\Services" />
-      <Folder Include="Profiles\Interfaces\Internal" />
       <Folder Include="Shared\Extensions" />
       <Folder Include="Social\Domain" />
       <Folder Include="Social\Interfaces" />
       <Folder Include="Social\Services" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Profiles\Interfaces\Internal\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Profiles\Interfaces\Internal\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Profiles\Interfaces\Internal\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Profiles\Interfaces\Internal\**" />
     </ItemGroup>
 
 </Project>
