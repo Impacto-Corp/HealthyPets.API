@@ -50,7 +50,7 @@ public class JwtHandler:IJwtHandler
         if (string.IsNullOrEmpty(token))
             return null;
         var tokenHandler = new JwtSecurityTokenHandler();
-        var = Encoding.ASCII.GetBytes(_appsSettings.Secret);
+        var key= Encoding.ASCII.GetBytes(_appsSettings.Secret);
         try
         {
             tokenHandler.ValidateToken(token, new TokenValidationParameters
