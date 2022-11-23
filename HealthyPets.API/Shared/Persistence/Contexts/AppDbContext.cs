@@ -48,7 +48,14 @@ public class AppDbContext:DbContext
         builder.Entity<Appointment>().HasKey(p => p.Id);
         builder.Entity<Appointment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Appointment>().Property(p => p.Date).IsRequired();
+        
+        builder.Entity<Appointment>().Property(p => p.Date).IsRequired();
 
+        
+        
+        
+        
+        
         builder.Entity<Pet>().ToTable("Pets");
         builder.Entity<Pet>().HasKey(p => p.Id);
         builder.Entity<Pet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
@@ -60,7 +67,7 @@ public class AppDbContext:DbContext
         builder.Entity<Messages>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Messages>().Property(p => p.Message).IsRequired().HasMaxLength(350);
             //Relationships
-        //builder.Entity<Appointment>().HasMany(p=>p.Evaluation).WithOne(p=>p.Appo)
+        //builder.Entity<Appointment>()x.HasMany(p=>p.Evaluation).WithOne(p=>p.Appo)
         //builder.Entity<Appointment>().HasMany(p=>p.Pet).WithOne(p=>p.Appo)
 
 

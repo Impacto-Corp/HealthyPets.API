@@ -76,14 +76,4 @@ public class AppointmentsController : ControllerBase
         return Ok(appointmentResource); 
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
