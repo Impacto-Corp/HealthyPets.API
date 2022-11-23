@@ -24,7 +24,6 @@
       <Folder Include="MedicalRecords\Services" />
       <Folder Include="Profiles\Interfaces\Internal" />
       <Folder Include="Security\Interfaces\Rest\Controllers" />
-      <Folder Include="Security\Services" />
       <Folder Include="Shared\Extensions" />
       <Folder Include="Social\Domain" />
       <Folder Include="Social\Interfaces" />

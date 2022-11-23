@@ -1,6 +1,7 @@
 ﻿using HealthyPets.API.Security.Authorization.Handlers.Interfaces;
 using HealthyPets.API.Security.Authorization.Setting;
 using HealthyPets.API.Security.Domain.Services;
+using Microsoft.Extensions.Options;
 
 namespace HealthyPets.API.Security.Authorization.Middleware;
 
@@ -9,10 +10,10 @@ public class JwtMiddleware
     private readonly RequestDelegate _next;
     private readonly AppsSettings _appSettings;
 
-    public JwtMiddleware(RequestDelegate next, AppsSettings appSettings)
+    public JwtMiddleware(RequestDelegate next, IOptions<AppsSettings> appSettings)
     {
         _next = next;
-        _appSettings = appSettings;
+        _appSettings = appSettings.Value;
     }
 
     public async Task Invoker(
