@@ -3,6 +3,7 @@ using HealthyPets.API.MedicalRecords.Domain;
 using HealthyPets.API.MedicalRecords.Domain.Models;
 using HealthyPets.API.Patients.Domain.Model;
 using HealthyPets.API.Profiles.Domain.Model;
+using HealthyPets.API.Security.Domain.Model;
 using HealthyPets.API.Shared.Extensions;
 using HealthyPets.API.Social.Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ public class AppDbContext:DbContext
     public DbSet<Pet> Pets { get; set; }
     public DbSet<Vet> Vets { get; set; }
     public DbSet<Messages> Messages { get; set; }
+    public DbSet<User> Users { get; set; }
     public AppDbContext(DbContextOptions options) : base(options)
     {
         
@@ -89,6 +91,15 @@ public class AppDbContext:DbContext
             .IsRequired().HasMaxLength(40);
 
 
+        builder.Entity<User>().ToTable("Users");
+        builder.Entity<User>().HasKey(p => p.Id);
+        builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<User>().Property(p => p.Username).IsRequired().HasMaxLength(30);
+        builder.Entity<User>().Property(p => p.FirstName).IsRequired();
+        builder.Entity<User>().Property(p => p.LastName).IsRequired();
+        
+        
+        
 
 
         builder.UseSnakeCaseNamingConvention();
