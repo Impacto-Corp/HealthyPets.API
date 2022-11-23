@@ -52,5 +52,3 @@ public class UserRepository: BaseRepository,IUserRepository
         _context.Users.Remove(user);
     }
 }
-
-}
