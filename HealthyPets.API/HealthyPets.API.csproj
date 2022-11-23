@@ -9,11 +9,14 @@
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="12.0.0" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.11" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.10" />
         <PackageReference Include="Microsoft.OpenApi" Version="1.4.3" />
         <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.7" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,7 +24,6 @@
       <Folder Include="MedicalRecords\Services" />
       <Folder Include="Profiles\Interfaces\Internal" />
       <Folder Include="Security\Authorization\Attributes" />
-      <Folder Include="Security\Authorization\Handlers" />
       <Folder Include="Security\Authorization\Middleware" />
       <Folder Include="Security\Interfaces\Rest\Controllers" />
       <Folder Include="Security\Services" />
