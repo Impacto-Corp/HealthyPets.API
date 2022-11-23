@@ -7,7 +7,7 @@ namespace HealthyPets.API.Security.Mapping;
 
 public class ModelToResourceProfile: Profile
 {
-    protected ModelToResourceProfile()
+    public ModelToResourceProfile()
     {
         CreateMap<User, AuthenticateResponse>();
         CreateMap<User, UserResource>();
