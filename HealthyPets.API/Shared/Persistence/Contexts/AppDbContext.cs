@@ -33,10 +33,15 @@ public class AppDbContext:DbContext
         //Evaluation Configuration 
         builder.Entity<Evaluation>().ToTable("Evaluations");
         builder.Entity<Evaluation>().HasKey(p => p.Id);
-        builder.Entity<Evaluation>().Property(p => p.Id)
-            .IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Evaluation>().Property(p => p.Name)
-            .IsRequired().HasMaxLength(40);
+        builder.Entity<Evaluation>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Evaluation>().Property(p => p.Name).IsRequired().HasMaxLength(40);
+        builder.Entity<Evaluation>().Property(p => p.Time).IsRequired();
+        builder.Entity<Evaluation>().Property(p => p.Report).IsRequired().HasMaxLength(200);
+
+        builder.Entity<Client>()
+            .HasMany(p => p.Evaluations)
+            .WithOne(p => p.Client)
+            .HasForeignKey(p => p.ClientId);
 
         //Fluent API
         
@@ -48,14 +53,7 @@ public class AppDbContext:DbContext
         builder.Entity<Appointment>().HasKey(p => p.Id);
         builder.Entity<Appointment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Appointment>().Property(p => p.Date).IsRequired();
-        
-        builder.Entity<Appointment>().Property(p => p.Date).IsRequired();
 
-        
-        
-        
-        
-        
         builder.Entity<Pet>().ToTable("Pets");
         builder.Entity<Pet>().HasKey(p => p.Id);
         builder.Entity<Pet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
@@ -67,7 +65,7 @@ public class AppDbContext:DbContext
         builder.Entity<Messages>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Messages>().Property(p => p.Message).IsRequired().HasMaxLength(350);
             //Relationships
-        //builder.Entity<Appointment>()x.HasMany(p=>p.Evaluation).WithOne(p=>p.Appo)
+        //builder.Entity<Appointment>().HasMany(p=>p.Evaluation).WithOne(p=>p.Appo)
         //builder.Entity<Appointment>().HasMany(p=>p.Pet).WithOne(p=>p.Appo)
 
 

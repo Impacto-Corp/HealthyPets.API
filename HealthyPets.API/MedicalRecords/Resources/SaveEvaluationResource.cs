@@ -6,4 +6,7 @@ public class SaveEvaluationResource
 {
     [Required]
     public string Name { get; set; }
+    
+    public DateTime Date { get; set; }
+    public string Report { get; set; }
 }

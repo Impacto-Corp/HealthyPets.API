@@ -22,6 +22,11 @@ public class EvaluationService:IEvaluationService
         return await _evaluationRepository.ListAsync();
     }
 
+    public async Task<IEnumerable<Evaluation>> ListByClientIdAsync(int clientId)
+    {
+        return await _evaluationRepository.FindByClientIdAsync(clientId);
+    }
+
     public async Task<EvaluationResponse> SaveAsync(Evaluation evaluation)
     {
         try
