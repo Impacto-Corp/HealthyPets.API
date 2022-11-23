@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace HealthyPets.API.Security.Domain.Model;
+namespace HealthyPets.API.Security.Domain.Models;
 
 public class User
 {

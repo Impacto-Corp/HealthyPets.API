@@ -1,4 +1,4 @@
-﻿using HealthyPets.API.Security.Domain.Model;
+﻿using HealthyPets.API.Security.Domain.Models;
 
 namespace HealthyPets.API.Security.Domain.Repositories;
 
